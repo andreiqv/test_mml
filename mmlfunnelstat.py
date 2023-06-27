@@ -232,9 +232,12 @@ if __name__ == "__main__":
     ]
 
     for question in questions:
+        t1 = time.time()
         res = process_single_request(question, data)
+        t2 = time.time()
         print(f"\n- Question: {question}")
         print("- Answer:", res.get("answer"))
+        print("Time: {:.2f} sec.".format(t2 - t1))
 
         
         #with open("_output.json", "wt") as fp:
