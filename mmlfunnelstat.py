@@ -176,7 +176,7 @@ def process_single_request(question, data):
 
     request = prefix0 + question + prefix1 + data # + postfix
     try:
-        answer = process_text_with_chatgpt(request)
+        answer = process_text_with_gpt(request)
         #print("Full response:", answer)
         result = {
             "status": "success",
