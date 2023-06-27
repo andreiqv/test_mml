@@ -14,7 +14,7 @@ import multiprocessing
 
 from gpt4allj import Model
 
-MODEL_PATH = "/home/ubuntu/tmp/gpt4all"
+MODEL_PATH = "/home/ubuntu/tmp/gpt4all/ggml-gpt4all-j-v1.3-groovy.bin"
 print(f"Loading model from {MODEL_PATH}...")
 GPT_MODEL = Model(MODEL_PATH)
 print(f"The model has been loaded.")
