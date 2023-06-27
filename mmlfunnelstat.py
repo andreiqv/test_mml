@@ -10,7 +10,7 @@ import multiprocessing
 
 # testgold
 #openai.organization = "org-BbIjJDdeiFQjD7KKmsfCMRrI"
-#openai.api_key = "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"
+#openai.api_key = ""
 
 from gpt4allj import Model
 
