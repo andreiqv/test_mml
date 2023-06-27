@@ -100,8 +100,6 @@ overall funnel rankings as funnel_rankings item:
 - n_starts: ranked list of funnels by number of people starting the funnel
 - n_starts_diff: ranked list of funnels by the difference in number of starting people at start of date period and number of starting people at end of date period
 
-
-Here is the input data:
 """
 
 postfix = """
@@ -191,6 +189,9 @@ def process_single_request(question, data):
     # input_text = remove_empty_lines(input_text)
 
     request = prefix0 + question + prefix1 + data # + postfix
+
+    request = "Here is the input data:\n" + data + prefix0 + question
+
     try:
         answer = process_text_with_gpt(request)
         #print("Full response:", answer)
@@ -233,11 +234,11 @@ if __name__ == "__main__":
         "What anomaly can you find in this data?",
         "What is the conversion rate in percent?",
         "When the flows were maximum and minimum?",
-        "When the flows were maximum and minimum? Write a list of dates in the format like '10 Jan 2000'",
-        "What can you say about retention rate by time?",
-        "How many sessions were started at 2023-06-12/2023-06-13?",
-        "Do you think this data is correct?",
-        "What else can you say about this data?",
+        #"When the flows were maximum and minimum? Write a list of dates in the format like '10 Jan 2000'",
+        #"What can you say about retention rate by time?",
+        #"How many sessions were started at 2023-06-12/2023-06-13?",
+        #"Do you think this data is correct?",
+        #"What else can you say about this data?",
     ]
 
     questions22 = [
