@@ -1,3 +1,17 @@
+"""
+
+GPT result: {'status': 'success', 'error_source': 'chatgpt', 'answer': '-06-01/2023-06-02": 2,\n                "2023-06-02/2023-06-03": 1,\n                "2023-06-03/2023-06-04": 2,\n                "2023-06-04/2023-06-05": 2,\n                "202', 'input_text': 4294}
+
+- Question: Which week has the lowest conversion rate? And what is the value? Return a range of values for 7 days
+- Answer: -06-01/2023-06-02": 2,
+                "2023-06-02/2023-06-03": 1,
+                "2023-06-03/2023-06-04": 2,
+                "2023-06-04/2023-06-05": 2,
+                "202
+
+
+"""
+
 import os
 import sys
 import re
@@ -98,7 +112,9 @@ Return only data in JSON format, don't return additional comments.
 
 def process_text_with_gpt(request):
 
-    answer = GPT_MODEL.generate(request)
+    answer = GPT_MODEL.generate(request,
+        n_predict=300
+    )
 
     return answer
 
@@ -224,7 +240,7 @@ if __name__ == "__main__":
         "What else can you say about this data?",
     ]
 
-    questions = [
+    questions22 = [
         #"Discribe changes/trend in conversion rate by time",
         #"What is max value for n_starts_by_time?"
         #"What is avarage value for n_starts_by_time?"
