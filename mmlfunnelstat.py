@@ -213,13 +213,13 @@ def process_single_request(question, data):
     #if answer:
     #    result = parse_gpt_answer(answer)
 
-    print("-----------------------")
-    print(request)
-    with open("_input_text.txt", "wt") as fp:
-        fp.write(request)
-    print("-----------------------")
-    result["input_text"] = len(request)
-    print("GPT result:", result)
+    #print("-----------------------")
+    #print(request)
+    #with open("_input_text.txt", "wt") as fp:
+    #    fp.write(request)
+    #print("-----------------------")
+    #result["input_text"] = len(request)
+    #print("GPT result:", result)
 
     return result
 
