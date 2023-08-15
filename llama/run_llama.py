@@ -70,7 +70,20 @@ def init_auto_model_and_tokenizer(model_name, model_type, file_name=None):
 
 def run_ui(model, tokenizer, is_chat_model, model_type):
 
-  history = "Write an example of JSON file"
+  history = """
+  ### INSTRUCTION ###
+
+Based on an user question below, generate a request to external API as a JSON dictionary with the following keys:
+- "question_type", string: possible values "apicall" (if it is about api calls), "other" (if about something else);
+- "target_fields", a list of required fields about which the user asks, possible values: "apicall_uid", "session_uid", "testrun_requestid", "pageviews_project_id", "created_at" (date and time of creation), "updated_at" (date and time of updating), "is_active", "url", "originating_page_url", "method", "status" (like "200 - OK"), "status_code" (int, like 200), "response_type" (usually "str"), "response_time" (int value in seconds), "request_headers", "response_headers", "request_body", "response_body"; 
+- "aggregations": a list of required aggregations for pandas aggregation function, possible values: "count", "nunique" (unique count), "max", "min", "sum", "average", "median", "mode", "std" (standard_deviation), "var" (variance), "quantile";
+- "date_range": tuple of two stings (begin and end dates), for example ("2023-07-26", "2023-07-30");
+- "filter_params": a dict like {"method": "get", "status_code": 200} that contains additional conditions or restrictions on the request.
+
+### USER QUESTION ###
+
+What is number of apicalls for dates from 1 January 2021 to 20 Feb 2022
+  """
   instruction = history
   kwargs = dict(temperature=0.6, top_p=0.9)
   if model_type == Model_Type.ggml:
