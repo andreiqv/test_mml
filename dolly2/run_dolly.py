@@ -1,11 +1,14 @@
+# pip install torch
 # pip install transformers
 # pip install accelerate
+# pip install bitsandbytes
+# pip install scipy
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from instruct_pipeline import InstructionTextGenerationPipeline
 
-base_model = "databricks/dolly-v2-12b"
+base_model = "databricks/dolly-v2-3b"
 load_8bit = True
 
 tokenizer = AutoTokenizer.from_pretrained(base_model, padding_side="left")
