@@ -77,7 +77,7 @@ def run_ui(model, tokenizer, is_chat_model, model_type):
       kwargs["max_tokens"] = 512
       for chunk in model(prompt=instruction, stream=True, **kwargs):
           token = chunk["choices"][0]["text"]
-          history[-1][1] += token
+          history += token
           yield history
 
   else:
@@ -90,7 +90,7 @@ def run_ui(model, tokenizer, is_chat_model, model_type):
       thread.start()
 
       for token in streamer:
-          history[-1][1] += token
+          history += token
           yield history
 
       #msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(bot, chatbot, chatbot)
