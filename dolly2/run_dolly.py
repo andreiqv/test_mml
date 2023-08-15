@@ -8,7 +8,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from instruct_pipeline import InstructionTextGenerationPipeline
 
-base_model = "databricks/dolly-v2-3b"
+base_model = "databricks/dolly-v2-7b"
 load_8bit = True
 
 tokenizer = AutoTokenizer.from_pretrained(base_model, padding_side="left")
