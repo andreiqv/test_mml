@@ -83,6 +83,23 @@ What is number of apicalls for dates from 1 January 2021 to 20 Feb 2022
 
 Answer:
   """
+  history = """
+### INSTRUCTION ###
+
+Using the data below, provide the answer on an user question about this data.
+If the data doesn't contain all required information then notify the user to formulate more precise query.
+
+### DATA ###
+
+{"input": {"question_type": "apicall", "target_fields": ["apicall_uid"], "aggregations": ["count"], "date_range": ["2021-01-01", "2022-02-20"], "filter_params": {}}, "result": {"The count of apicall_uid": 2493}}
+
+### QUESTION ###
+
+What is number of apicalls for dates from 1 January 2021 to 20 Feb 2022
+
+### ANSWER ###
+  """
+
   instruction = history
   kwargs = dict(temperature=0.6, top_p=0.9)
   if model_type == Model_Type.ggml:
