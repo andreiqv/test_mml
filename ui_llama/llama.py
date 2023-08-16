@@ -66,10 +66,11 @@ def run_ui(model, tokenizer, is_chat_model, model_type):
           return "", history + [[user_message, None]]
 
       def bot(history):
-          if is_chat_model:
-              instruction = format_to_llama_chat_style(history)
-          else:
-              instruction =  history[-1][0]
+          #if is_chat_model:
+          #    instruction = format_to_llama_chat_style(history)
+          #else:
+          #    instruction =  history[-1][0]
+          instruction =  history[-1][0]
 
           history[-1][1] = ""
           kwargs = dict(temperature=0.6, top_p=0.9)
