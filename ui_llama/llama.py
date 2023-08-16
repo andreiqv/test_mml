@@ -75,6 +75,7 @@ def run_ui(model, tokenizer, is_chat_model, model_type):
           kwargs = dict(temperature=0.6, top_p=0.9)
           if model_type == Model_Type.ggml:
               kwargs["max_tokens"] = 512
+              print("PROMPT:", instruction)
               for chunk in model(prompt=instruction, stream=True, **kwargs):
                   token = chunk["choices"][0]["text"]
                   history[-1][1] += token
