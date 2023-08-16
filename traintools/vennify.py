@@ -20,7 +20,7 @@ def main():
     happy_gen = HappyGeneration(model_type="LLAMA-2", model_name="meta-llama/Llama-2-7b-chat-hf")
 
     train_args = GENTrainArgs(
-        #fp16=True,
+        #fp16=True,  # works with GPU only
         deepspeed="ZERO-2",
         max_length = 256
     )
