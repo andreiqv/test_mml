@@ -6,15 +6,18 @@ def main():
     train_txt_path = "train.txt"
     eval_txt_path = "eval.txt"
 
-    train_dataset = load_dataset('billsum', split='train[0:1999]')
-    eval_dataset = load_dataset('billsum', split='test[0:199]')
+    #train_dataset = load_dataset('billsum', split='train[0:1999]')
+    #eval_dataset = load_dataset('billsum', split='test[0:199]')
+    train_dataset = load_dataset('billsum', split='train[0:199]')
+    eval_dataset = load_dataset('billsum', split='test[0:19]')
+    print("eval_dataset:", eval_dataset)
 
     generate_txt(train_txt_path, train_dataset)
     generate_txt(eval_txt_path, eval_dataset)
 
     
-    happy_gen = HappyGeneration(model_type="GPTJ", model_name="EleutherAI/gpt-j-6b")
-    # happy_gen = HappyGeneration(model_type="LLAMA-2", model_name="meta-llama/Llama-2-7b-chat-hf")
+    #happy_gen = HappyGeneration(model_type="GPTJ", model_name="EleutherAI/gpt-j-6b")
+    happy_gen = HappyGeneration(model_type="LLAMA-2", model_name="meta-llama/Llama-2-7b-chat-hf")
 
     train_args = GENTrainArgs(
         fp16=True,
