@@ -7,8 +7,8 @@ from transformers import AutoModelForCausalLM, BitsAndBytesConfig, AutoTokenizer
 from peft import LoraConfig
 from trl import SFTTrainer
 
-train_dataset = load_dataset('json', data_files='/home/ubuntu/dataset/alpaca_train.json', split='train')
-eval_dataset = load_dataset('json', data_files='/home/ubuntu/dataset/alpaca_test.json', split='train')
+train_dataset = load_dataset('json', data_files='/home/ubuntu/llm/dataset/alpaca_train.json', split='train')
+eval_dataset = load_dataset('json', data_files='/home/ubuntu/llm/dataset/alpaca_test.json', split='train')
 
 
 def formatting_func(example):
