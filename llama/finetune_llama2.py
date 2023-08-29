@@ -47,6 +47,32 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
 
+
+    output_dir = "./Llama-2-7b-hf-fine-tune-baby"
+
+    training_args = TrainingArguments(
+        output_dir=output_dir,
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=4,
+        learning_rate=2e-4,
+        logging_steps=50,
+        max_steps=500, #1000,
+        logging_dir="./logs",        # Directory for storing logs
+        save_strategy="steps",       # Save the model checkpoint every logging step
+        save_steps=250,               # Save checkpoints every 50 steps
+        evaluation_strategy="steps", # Evaluate the model every logging step
+        eval_steps=250,               # Evaluate and save checkpoints every 50 steps
+        do_eval=True                 # Perform evaluation at the end of training
+    )
+
+    peft_config = LoraConfig(
+        lora_alpha=16,
+        lora_dropout=0.1,
+        r=64,
+        bias="none",
+        task_type="CAUSAL_LM",
+    )
+
     max_seq_length = 512
     trainer = SFTTrainer(
         model=base_model,
