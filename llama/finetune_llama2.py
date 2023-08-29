@@ -16,9 +16,7 @@ def formatting_func(example):
     return [text]
 
 
-def load_model():
-
-    base_model_name = "meta-llama/Llama-2-7b-hf"
+def load_model(base_model_name):
 
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -37,6 +35,14 @@ def load_model():
 
     # More info: https://github.com/huggingface/transformers/pull/24906
     base_model.config.pretraining_tp = 1
+
+    return base_model
+
+
+if __name__ == "__main__":
+
+    base_model_name = "meta-llama/Llama-2-7b-hf"
+    base_model = load_model(base_model_name)
 
     tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
