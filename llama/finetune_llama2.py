@@ -8,7 +8,7 @@ from peft import LoraConfig
 from trl import SFTTrainer
 
 train_dataset = load_dataset('json', data_files='/home/ubuntu/dataset/alpaca_train.json', split='train')
-eval_dataset = load_dataset('json', data_files='/home/ubuntu/dataset/alpaca_test.json', split='test')
+eval_dataset = load_dataset('json', data_files='/home/ubuntu/dataset/alpaca_test.json', split='train')
 
 
 def formatting_func(example):
