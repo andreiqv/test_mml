@@ -55,13 +55,13 @@ if __name__ == "__main__":
         per_device_train_batch_size=4,
         gradient_accumulation_steps=4,
         learning_rate=2e-4,
-        logging_steps=20,
-        max_steps=200, #1000,
+        logging_steps=5,
+        max_steps=20, #1000,
         logging_dir="./logs",        # Directory for storing logs
         save_strategy="steps",       # Save the model checkpoint every logging step
-        save_steps=200,               # Save checkpoints every 50 steps
+        save_steps=20,               # Save checkpoints every 50 steps
         evaluation_strategy="steps", # Evaluate the model every logging step
-        eval_steps=200,               # Evaluate and save checkpoints every 50 steps
+        eval_steps=20,               # Evaluate and save checkpoints every 50 steps
         do_eval=True                 # Perform evaluation at the end of training
     )
 

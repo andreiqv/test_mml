@@ -29,7 +29,7 @@ tokenizer.pad_token = tokenizer.eos_token
 
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
-path = "/home/ubuntu/llm/test_mml/llama/Llama-2-7b-hf-fine-tune-baby/checkpoint-200"
+path = "/home/ubuntu/llm/test_mml/llama/Llama-2-7b-hf-fine-tune-baby/checkpoint-20"
 model = PeftModel.from_pretrained(base_model, path)
 model.eval()
 
@@ -60,12 +60,12 @@ if __name__ == "__main__":
 
     question = "What is the standard deviation of median for API calls with status Server Error?"
     result = inference(question)
-    print("result:", result)
+    print("OUTPUT:", result)
 
     while True:
-        q = input("Question:")
+        q = input("\nQuestion:")
         if len(q) < 3:
             break
         result = inference(eval_prompt)
-        print("Result:", result)
+        print("OUTPUT:", result)
         print()
