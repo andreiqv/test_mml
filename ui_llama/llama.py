@@ -1,3 +1,16 @@
+"""
+Based on https://github.com/thisserand/llama2_local.git
+
+How to run it:
+
+python llama.py --model_name="meta-llama/Llama-2-7b-hf"
+python llama.py --model_name="meta-llama/Llama-2-7b-chat-hf"
+
+python llama.py --model_name="TheBloke/Llama-2-7B-GPTQ"
+python llama.py --model_name="TheBloke/Llama-2-7B-GGML" --file_name="llama-2-7b.ggmlv3.q4_K_M.bin"
+python llama.py --model_name="TheBloke/Llama-2-7B-Chat-GGML" --file_name="llama-2-7b-chat.ggmlv3.q4_K_M.bin"
+"""
+
 import os
 import gradio as gr
 import fire
@@ -99,6 +112,7 @@ def run_ui(model, tokenizer, is_chat_model, model_type):
       clear.click(lambda: None, None, chatbot, queue=False)
   demo.queue()
   demo.launch(share=True, debug=True)
+
 
 def main(model_name=None, file_name=None):
     assert model_name is not None, "model_name argument is missing."
