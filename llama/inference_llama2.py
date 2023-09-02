@@ -29,7 +29,7 @@ tokenizer.pad_token = tokenizer.eos_token
 
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
-path = "/home/ubuntu/llm/test_mml/llama/Llama-2-7b-hf-fine-tune-baby/checkpoint-500"
+path = "/home/ubuntu/llm/test_mml/llama/Llama-2-7b-hf-fine-tune-baby/checkpoint-600"
 model = PeftModel.from_pretrained(base_model, path)
 model.eval()
 
@@ -39,8 +39,9 @@ eval_prompt = "\nBased on the user question, generate a request to an external A
 
 instruction = "\nBased on the user question, generate a request to an external API as a JSON dictionary with the following keys:\n- \"question_type\": a string with possbile values \"apicall\" or \"other\";\n- \"target_fields\": a list of required fields about which the user asks;\n- \"aggregations\": a list of required aggregations for pandas aggregation function;\n- \"dates\": a dict with a range of dates like {\"start_date\": \"2023-07-26\", \"end_date\": \"2023-07-30\"), or a specific date {\"specific_date\": \"2023-08-01\"};\n- \"filter_params\": a dict like {\"method\": \"get\", \"status_code\": 200} containing additional conditions or restrictions on the request.\n"
 
-def formatting(_input):
-    text = f"### Instruction: {instruction} ### Question: {_input}\n ### Answer:"
+def formatting(question):
+    #text = f"### Instruction: {instruction} ### Question: {question}\n ### Answer:"
+    text = f"<START_Q>{question}<END_Q><START_A>"
     return text
 
 

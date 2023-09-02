@@ -12,7 +12,11 @@ eval_dataset = load_dataset('json', data_files='/home/ubuntu/llm/dataset/alpaca_
 
 
 def formatting_func(example):
-    text = f"### Instruction: {example['instruction']} ### Question: {example['input']}\n ### Answer: {example['output']}"
+    instruction = example['instruction']
+    question = example['input']
+    answer = example['output']
+    #text = f"### Instruction: {instruction} ### Question: {question}\n ### Answer: {answer}"
+    text = f"<START_Q>{question}<END_Q><START_A>{answer}<END_A>"
     return [text]
 
 
@@ -48,20 +52,25 @@ if __name__ == "__main__":
     tokenizer.pad_token = tokenizer.eos_token
 
 
-    output_dir = "./Llama-2-7b-hf-fine-tune-baby"
+    #output_dir = "./Llama-2-7b-hf-fine-tune-baby"
+    output_dir = "./outmodels"
+
+    num_iters = 600
+    eval_steps = 100
+    log_steps = 50
 
     training_args = TrainingArguments(
         output_dir=output_dir,
         per_device_train_batch_size=4,
         gradient_accumulation_steps=4,
         learning_rate=2e-4,
-        logging_steps=50,
-        max_steps=500, #1000,
+        logging_steps=log_steps,
+        max_steps=num_iters, #1000,
         logging_dir="./logs",        # Directory for storing logs
         save_strategy="steps",       # Save the model checkpoint every logging step
-        save_steps=500,               # Save checkpoints every 50 steps
+        save_steps=num_iters,        # Save checkpoints every 50 steps
         evaluation_strategy="steps", # Evaluate the model every logging step
-        eval_steps=100,               # Evaluate and save checkpoints every 50 steps
+        eval_steps=eval_steps,       # Evaluate and save checkpoints every 50 steps
         do_eval=True                 # Perform evaluation at the end of training
     )
 
