@@ -46,8 +46,10 @@ def load_model(base_model_name):
 if __name__ == "__main__":
 
     base_model_name = "meta-llama/Llama-2-7b-hf"
+    print(f"Loading the model {base_model_name}...")
     base_model = load_model(base_model_name)
 
+    print(f"AutoTokenizer...")
     tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
 
@@ -83,6 +85,7 @@ if __name__ == "__main__":
     )
 
     max_seq_length = 512
+    print(f"SFTTrainer with max_seq_length={max_seq_length}")
     trainer = SFTTrainer(
         model=base_model,
         train_dataset=train_dataset,
@@ -95,4 +98,7 @@ if __name__ == "__main__":
     )
 
     # pass in resume_from_checkpoint=True to resume from a checkpoint
+    print("Starting the training...")
     trainer.train()
+
+    print(f"Saved in {output_dir}")
