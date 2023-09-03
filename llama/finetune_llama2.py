@@ -16,7 +16,8 @@ def formatting_func(example):
     question = example['input']
     answer = example['output']
     #text = f"### Instruction: {instruction} ### Question: {question}\n ### Answer: {answer}"
-    text = f"<START_Q>{question}<END_Q><START_A>{answer}<END_A>"
+    #text = f"<START_Q>{question}<END_Q><START_A>{answer}<END_A>"
+    text = f"<START_I>{instruction}<END_I><START_Q>{question}<END_Q><START_A>{answer}<END_A>"
     return [text]
 
 
@@ -57,9 +58,9 @@ if __name__ == "__main__":
     #output_dir = "./Llama-2-7b-hf-fine-tune-baby"
     output_dir = "./outmodels"
 
-    num_iters = 600
-    eval_steps = 100
-    log_steps = 50
+    num_iters = 200
+    eval_steps = 5
+    log_steps = 5
 
     training_args = TrainingArguments(
         output_dir=output_dir,

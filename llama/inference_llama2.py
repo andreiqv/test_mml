@@ -42,7 +42,7 @@ instruction = "\nBased on the user question, generate a request to an external A
 
 def formatting(question):
     #text = f"### Instruction: {instruction} ### Question: {question}\n ### Answer:"
-    text = f"<START_Q>{question}<END_Q><START_A>"
+    text = f"<START_I>{instruction}<END_I><START_Q>{question}<END_Q><START_A>"
     return text
 
 
