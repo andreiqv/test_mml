@@ -29,7 +29,8 @@ tokenizer.pad_token = tokenizer.eos_token
 
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
 #model = PeftModel.from_pretrained(base_model, "/root/llama2sfft-testing/Llama-2-7b-hf-qlora-full-dataset/checkpoint-900")
-path = "/home/ubuntu/llm/test_mml/llama/outmodels/checkpoint-600"
+path = "/home/ubuntu/llm/test_mml/llama/Llama-2-7b-hf-fine-tune-baby/checkpoint-500"
+path = "/home/ubuntu/llm/test_llm/llama/outmodels/checkpoint-600"
 model = PeftModel.from_pretrained(base_model, path)
 model.eval()
 
