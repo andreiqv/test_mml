@@ -141,4 +141,5 @@ def main(model_name=None, file_name=None):
         print(t)
 
 if __name__ == '__main__':
-  main(model_name="TheBloke/Llama-2-7B-Chat-GGML", file_name="llama-2-7b-chat.ggmlv3.q4_K_M.bin")
+  #main(model_name="TheBloke/Llama-2-7B-Chat-GGML", file_name="llama-2-7b-chat.ggmlv3.q4_K_M.bin")
+  main(model_name="TheBloke/Llama-2-7B-GGML", file_name="llama-2-7b.ggmlv3.q4_K_M.bin")
