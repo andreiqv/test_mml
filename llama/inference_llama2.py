@@ -1,6 +1,7 @@
 from huggingface_hub import notebook_login
 notebook_login()
 
+import time
 from datasets import load_dataset
 import torch
 from transformers import AutoModelForCausalLM, BitsAndBytesConfig, AutoTokenizer
@@ -69,6 +70,9 @@ if __name__ == "__main__":
         q = input("\nQuestion:")
         if len(q) < 3:
             break
+
+        t0 = time.time()
         result = inference(eval_prompt)
         print("OUTPUT:", result)
+        print("time: {:.3f} sec".format(time.time() - t0))
         print()
