@@ -5,14 +5,11 @@
 # pip install scipy
 
 import os
-import gradio as gr
-import fire
+import time
 from enum import Enum
 from threading import Thread
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM
-from llama_cpp import Llama
-from huggingface_hub import hf_hub_download
 from transformers import TextIteratorStreamer
 
 #model_id = "TheBloke/Llama-2-13B-chat-GGML"
