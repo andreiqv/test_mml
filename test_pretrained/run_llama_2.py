@@ -43,5 +43,17 @@ if __name__ == '__main__':
     prompt="""Write a poem to help me remember the first 10 elements on the periodic table, giving each
 element its own line."""
     tokens = llm.tokenize(prompt)
+
     result = llm(prompt, stream=False)
     print(result)
+
+    while True:
+        q = input("\nQuestion:")
+        if len(q) < 3:
+            break
+
+        t0 = time.time()
+        result = llm(q, stream=False)
+        print("OUTPUT:", result)
+        print("time: {:.3f} sec".format(time.time() - t0))
+        print()

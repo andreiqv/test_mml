@@ -72,7 +72,7 @@ if __name__ == "__main__":
             break
 
         t0 = time.time()
-        result = inference(eval_prompt)
+        result = inference(q)
         print("OUTPUT:", result)
         print("time: {:.3f} sec".format(time.time() - t0))
         print()
