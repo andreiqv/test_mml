@@ -18,7 +18,8 @@ from transformers import TextIteratorStreamer
 #import torch
 #from instruct_pipeline import InstructionTextGenerationPipeline
 
-model_id = "TheBloke/Llama-2-7B-Chat-GGML"
+#model_id = "TheBloke/Llama-2-7B-Chat-GGML"
+model_id = "TheBloke/Llama-2-7B-GGML"
 
 from ctransformers import AutoModelForCausalLM
 
@@ -35,6 +36,8 @@ llm = AutoModelForCausalLM.from_pretrained(model_id,
 
 
 if __name__ == '__main__':
+
+  # Please write an example of JSON data
 
 
     prompt="""
