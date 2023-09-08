@@ -40,8 +40,21 @@ llm = AutoModelForCausalLM.from_pretrained(model_id,
 if __name__ == '__main__':
 
 
-    prompt="""Write a poem to help me remember the first 10 elements on the periodic table, giving each
-element its own line."""
+    prompt="""
+### INSTRUCTION:
+
+Based on the user question below, generate a request to an external API as a JSON dictionary with the following keys:
+- "question_type", string: possible values "apicall" (if it is about api calls), "other" (if about something else);
+- "target_fields", a list of required fields about which the user asks, possible values: "apicall_uid", "session_uid", "testrun_requestid", "pageviews_project_id", "created_at" (date and time of creation), "updated_at" (date and time of updating), "is_active", "url", "originating_page_url", "method", "status" (like "200 - OK"), "status_code" (int, like 200), "response_type" (usually "str"), "response_time" (int value in seconds), "request_headers", "response_headers", "request_body", "response_body"; 
+- "aggregations": a list of required aggregations for pandas aggregation function, possible values: "count", "nunique" (unique count), "max", "min", "sum", "average", "median", "mode", "std" (standard_deviation), "var" (variance), "quantile";
+- "dates": a dict with a range of dates like {"start_date": "2023-07-26", "end_date": "2023-07-30"), or a specific date {"specific_date": "2023-08-01"} if the user defined it, overwise return the empty dict;
+- "filter_params": a dict like {"method": "get", "status_code": 200} that contains additional conditions or restrictions on the request.
+
+### USER QUESTION:
+
+What's the highest score in the recent game?
+
+    """
     tokens = llm.tokenize(prompt)
 
     result = llm(prompt, stream=False)
