@@ -52,13 +52,19 @@ Based on the user question below, generate a request to an external API as a JSO
 
 ### USER QUESTION:
 
-What's the highest score in the recent game?
+What is the minimum response time for API calls with response type str?
 
     """
     tokens = llm.tokenize(prompt)
 
     result = llm(prompt, stream=False)
     print(result)
+
+    t0 = time.time()
+    result = llm(prompt, stream=False)
+    print("OUTPUT:", result)
+    print("time: {:.3f} sec".format(time.time() - t0))
+
 
     while True:
         q = input("\nQuestion:")
