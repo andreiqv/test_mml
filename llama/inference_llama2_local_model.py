@@ -17,6 +17,7 @@ from peft import PeftModel
 
 base_model_name_remote = "meta-llama/Llama-2-7b-hf"
 base_model_name_local = "/home/ubuntu/llm/downloaded_meta-llama-2-7b-hf"
+base_model_name_local = "/home/ubuntu/llm/kaggle-llama2/llama2-7b-hf"
 #base_model_name_tokenizer_local = "/home/ubuntu/llm/meta-llama2/tokenizer"
 
 bnb_config = BitsAndBytesConfig(
