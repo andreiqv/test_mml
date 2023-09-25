@@ -31,6 +31,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",
     trust_remote_code=False, #True,
     use_auth_token=False, #True,
+    offload_folder="offload",
 )
 tokenizer = AutoTokenizer.from_pretrained(
     #base_model_name, trust_remote_code=True
