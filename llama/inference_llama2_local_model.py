@@ -16,7 +16,7 @@ from peft import PeftModel
 
 
 base_model_name_remote = "meta-llama/Llama-2-7b-hf"
-base_model_name_local = "/home/ubuntu/llm/test_llm/llama/downloaded_meta-llama-2-7b-hf"
+base_model_name_local = "/home/ubuntu/llm/downloaded_meta-llama-2-7b-hf"
 #base_model_name_tokenizer_local = "/home/ubuntu/llm/meta-llama2/tokenizer"
 
 bnb_config = BitsAndBytesConfig(
@@ -26,7 +26,7 @@ bnb_config = BitsAndBytesConfig(
 )
 base_model = AutoModelForCausalLM.from_pretrained(
     base_model_name_local,
-    quantization_config=bnb_config,
+    #quantization_config=bnb_config,
     device_map="auto",
     trust_remote_code=False, #True,
     use_auth_token=False, #True,
