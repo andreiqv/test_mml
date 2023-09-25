@@ -55,7 +55,7 @@ tokenizer = AutoTokenizer.from_pretrained(
 
 
 #Save the model and the tokenizer to your PC
-model.save_pretrained(dirname, from_pt=True) 
+base_model.save_pretrained(dirname, from_pt=True) 
 tokenizer.save_pretrained(dirname, from_pt=True)
 
 # Save the model and tokenizer
