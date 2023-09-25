@@ -16,9 +16,8 @@ from peft import PeftModel
 
 
 base_model_name_remote = "meta-llama/Llama-2-7b-hf"
-
-base_model_name_local = "/home/ubuntu/llm/meta-llama2/meta-llama2-7b"
-base_model_name_tokenizer_local = "/home/ubuntu/llm/meta-llama2/tokenizer"
+base_model_name_local = "/home/ubuntu/llm/test_llm/llama/downloaded_meta-llama-2-7b-hf"
+#base_model_name_tokenizer_local = "/home/ubuntu/llm/meta-llama2/tokenizer"
 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -34,7 +33,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(
     #base_model_name, trust_remote_code=True
-    base_model_name_tokenizer_local, trust_remote_code=False
+    base_model_name_local, trust_remote_code=False
 )
 tokenizer.pad_token = tokenizer.eos_token
 
