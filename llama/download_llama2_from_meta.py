@@ -28,7 +28,7 @@ bnb_config = BitsAndBytesConfig(
 )
 base_model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
-    quantization_config=bnb_config,
+    #quantization_config=bnb_config,
     device_map="auto",
     trust_remote_code=True,
     use_auth_token=True,
